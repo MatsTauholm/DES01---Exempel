@@ -63,7 +63,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveInput.x != 0)
         {
-            transform.localScale = new Vector2(Mathf.Sign(moveInput.x), transform.localScale.y);
+            Vector3 scale = transform.localScale;
+            scale.x = Mathf.Abs(scale.x) * Mathf.Sign(moveInput.x);
+            transform.localScale = scale;
         }
     }
 
