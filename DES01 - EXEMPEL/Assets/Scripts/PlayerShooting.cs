@@ -10,11 +10,6 @@ public class PlayerShooting : MonoBehaviour
 
     bool isFiring;
 
-    void Start()
-    {
-
-    }
-
     void OnFire(InputValue value)
     {
         isFiring = value.isPressed;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemies
   - Bullet
+  - Resetable
   layers:
   - Default
   - TransparentFX
