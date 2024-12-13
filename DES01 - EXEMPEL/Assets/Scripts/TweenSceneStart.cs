@@ -21,7 +21,7 @@ public class TweenSceneStart : MonoBehaviour
         {
             obj.transform.position = new Vector2(Random.Range(xMinRange, xMaxRange), Random.Range(yMinRange, yMaxRange));
         }
-        transform.position = new Vector2(Random.Range(xMinRange, xMaxRange), Random.Range(yMinRange, yMaxRange));
+        //transform.position = new Vector2(Random.Range(xMinRange, xMaxRange), Random.Range(yMinRange, yMaxRange));
         // Reset positions using DoTween
         //ResetToStartPositions();
         ResetToStartPositionsSequentially();
