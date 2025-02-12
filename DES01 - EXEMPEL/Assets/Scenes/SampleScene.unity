@@ -465,7 +465,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.548983, y: -5.7720838, z: -9.871276}
+  m_LocalPosition: {x: -18.548983, y: -7.2020836, z: -9.871276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -522,7 +522,6 @@ GameObject:
   - component: {fileID: 608229356}
   - component: {fileID: 608229355}
   - component: {fileID: 608229354}
-  - component: {fileID: 608229357}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -627,23 +626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &608229357
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608229352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NoiseProfile: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
-  m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 1
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,7 +1195,7 @@ Transform:
   m_GameObject: {fileID: 1656516087}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.548983, y: -5.7720838, z: -9.871276}
+  m_LocalPosition: {x: -18.548983, y: -7.2020836, z: -9.871276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1438,6 +1420,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 904759743223730205, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4867075223482110726, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -1452,7 +1438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7829471629103190085, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.07
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7829471629103190085, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_LocalPosition.z
