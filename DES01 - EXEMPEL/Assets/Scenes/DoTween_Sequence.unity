@@ -416,6 +416,8 @@ MonoBehaviour:
   - {fileID: 101998192}
   - {fileID: 319347382}
   aimPosition: {x: 5, y: -3}
+  minMoveTime: 0.5
+  maxMoveTime: 1
 --- !u!1 &319347381
 GameObject:
   m_ObjectHideFlags: 0
