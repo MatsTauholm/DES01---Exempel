@@ -33,7 +33,9 @@ public class EvilHead : MonoBehaviour
         foreach (var ninjaStar in ninjaStars)
         {
             ninjaStar.DOShakeScale(0.5f, 10, 10, 90, true);
-            ninjaStar.DOScale(Vector3.zero, 0.5f).SetDelay(1f).SetEase(Ease.InFlash);
+            ninjaStar.DOScale(Vector3.zero, 0.5f)
+                .SetDelay(1f)
+                .SetEase(Ease.InFlash);
         }
     }
 }
