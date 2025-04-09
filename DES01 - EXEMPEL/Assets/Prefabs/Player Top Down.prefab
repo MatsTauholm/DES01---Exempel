@@ -13,16 +13,20 @@ PrefabInstance:
       value: Player Top Down
       objectReference: {fileID: 0}
     - target: {fileID: 4867075223482110726, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867075223482110726, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7829471629103190085, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.1993278
       objectReference: {fileID: 0}
     - target: {fileID: 7829471629103190085, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.7647885
       objectReference: {fileID: 0}
     - target: {fileID: 7829471629103190085, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58,7 +62,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 173737700013250073, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
+    - {fileID: 7873632844942338826, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 114906875048071175, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7231959124553227369}
   m_SourcePrefab: {fileID: 100100000, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
+--- !u!1 &5471750474554142541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 114906875048071175, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
+  m_PrefabInstance: {fileID: 5365945640501280586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7231959124553227369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5471750474554142541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87996d6a4a9c724cbdc1fa826ef0350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpSpeed: 0
