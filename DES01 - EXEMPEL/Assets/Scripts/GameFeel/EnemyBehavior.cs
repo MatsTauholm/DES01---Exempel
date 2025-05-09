@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] int maxHealth = 7;
     int currentHealth;
     Rigidbody2D rb;
+    TimeFreezer timeFreezer;
 
     void Awake()
     {
@@ -18,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        timeFreezer = FindObjectOfType<TimeFreezer>();
     }
 
     void Update()
@@ -32,6 +34,7 @@ public class EnemyBehavior : MonoBehaviour
         // Check if health is depleted
         if (currentHealth <= 0)
         {
+            timeFreezer.Freeze();
             Destroy(gameObject);
         }
     }
