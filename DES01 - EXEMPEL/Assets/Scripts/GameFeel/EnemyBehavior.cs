@@ -8,11 +8,13 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] int maxHealth = 7;
     int currentHealth;
     Rigidbody2D rb;
+    private KnockBack knockback;
     TimeFreezer timeFreezer;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        knockback = GetComponent<KnockBack>();
     }
 
 
@@ -24,31 +26,24 @@ public class EnemyBehavior : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = new Vector2(-speed, rb.velocity.y);
+        if(!knockback.isBeingKnockedBack)
+        {
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
+        }
+        
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector2 hitDirection)
     {
         currentHealth -= damage;
-
         // Check if health is depleted
         if (currentHealth <= 0)
         {
             timeFreezer.Freeze();
             Destroy(gameObject);
         }
+
+        //Apply knockback
+        knockback.CallKnockBack(hitDirection, Vector2.up, 0f);
     }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Bullet"))
-        {
-            // Destroy the bullet
-            Destroy(collision.gameObject);
-
-            // Enemy takes 1 damage
-            TakeDamage(1);
-        }
-    }
-
 }

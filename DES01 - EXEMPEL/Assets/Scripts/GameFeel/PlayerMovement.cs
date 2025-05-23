@@ -12,51 +12,56 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool isJumping;
     private Vector2 moveInput;
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
+    private KnockBack knockback;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        knockback = GetComponent<KnockBack>();
     }
 
-    void Start()
+    private void Start()
     {
         
     }
 
-    void OnMove(InputValue value)
+    private void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
 
-    void OnJump()
+    private void OnJump()
     {
         if (isGrounded)
         { isJumping = true; }    
     }
 
-    void OnFire()
+    private void OnFire()
     {
 
     }
 
-    void Update()
+    private void Update()
     {
-        Run();
+        if(!knockback.isBeingKnockedBack)
+        {
+            Run();
+        }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         isGrounded = rb.IsTouching(groundFlter);
 
-        if (isJumping)
+        if (isJumping && !knockback.isBeingKnockedBack)
         {
             rb.velocity += (new Vector2(0f, jumpSpeed));
             isJumping = false;
         }
     }
 
-    void Run()
+    private void Run()
     {
         Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
         rb.velocity = playerVelocity;
@@ -66,6 +71,14 @@ public class PlayerMovement : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Abs(scale.x) * Mathf.Sign(moveInput.x);
             transform.localScale = scale;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemies"))
+        {
+            //knockback.CallKnockBack();
         }
     }
 
