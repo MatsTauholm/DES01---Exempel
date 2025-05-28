@@ -440,7 +440,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -465,7 +465,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.548983, y: -7.2020836, z: -9.871276}
+  m_LocalPosition: {x: -18.548983, y: -4.7720838, z: -9.871276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -565,9 +565,9 @@ MonoBehaviour:
   m_ZDamping: 1
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
-  m_ScreenY: 0.5
+  m_ScreenY: 0.77
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0
+  m_DeadZoneWidth: 0.12
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
@@ -1178,34 +1178,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5644850711039915843, guid: 9a511b3a7c79c5a48a8b9dc6bbdfa5b8, type: 3}
   m_PrefabInstance: {fileID: 1386932137}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1518355366 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 114906875048071175, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
-  m_PrefabInstance: {fileID: 4044004448229768721}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1518355367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518355366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8c399298d23be941824c80c6569c412, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockbackTime: 0.2
-  hitDirectionForce: 10
-  constForce: 5
-  inputForce: 7.5
-  knockbackForceCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  isBeingKnockedBack: 0
 --- !u!4 &1554843028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5644850711039915843, guid: 9a511b3a7c79c5a48a8b9dc6bbdfa5b8, type: 3}
@@ -1237,7 +1209,7 @@ Transform:
   m_GameObject: {fileID: 1656516087}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -18.548983, y: -7.2020836, z: -9.871276}
+  m_LocalPosition: {x: -18.548983, y: -4.7720838, z: -9.871276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1266,7 +1238,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1281690401}
   m_Lens:
     FieldOfView: 34
-    OrthographicSize: 10
+    OrthographicSize: 4.5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1458,21 +1430,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 114906875048071175, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 904759743223730205, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4867075223482110726, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4867075223482110726, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_GravityScale
-      value: 0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 7829471629103190085, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1514,21 +1474,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7873632844942338826, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
-      propertyPath: jumpSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7873632844942338826, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
-      propertyPath: moveSpeed
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 114906875048071175, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1518355367}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e5dcb3017944c45ba2748ace19727b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

@@ -13,17 +13,14 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     private Vector2 moveInput;
     private Rigidbody2D rb;
+    private Animator ani;
     private KnockBack knockback;
 
     private void Awake()
     {
+        ani = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         knockback = GetComponent<KnockBack>();
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void OnMove(InputValue value)
@@ -35,11 +32,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         { isJumping = true; }    
-    }
-
-    private void OnFire()
-    {
-
     }
 
     private void Update()
@@ -59,6 +51,17 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity += (new Vector2(0f, jumpSpeed));
             isJumping = false;
         }
+
+        if (!isGrounded)
+        {
+            ani.SetBool("isJumping", true);
+        }
+        else
+        {
+            ani.SetBool("isJumping", false);
+        }
+
+
     }
 
     private void Run()
@@ -71,6 +74,11 @@ public class PlayerMovement : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Abs(scale.x) * Mathf.Sign(moveInput.x);
             transform.localScale = scale;
+            ani.SetBool("isRunning", true);
+        }
+        else
+        {
+            ani.SetBool("isRunning", false);
         }
     }
 

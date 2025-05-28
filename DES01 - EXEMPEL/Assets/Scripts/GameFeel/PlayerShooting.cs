@@ -5,14 +5,52 @@ using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
+    [Header("Gun Settings")]
     [SerializeField] GameObject bullet;
     [SerializeField] Transform bulletSpawnPoint;
+    [SerializeField] float fireRate = 0.2f;
 
-    bool isFiring;
+    private float nextFireTime = 0f;
+    private bool isFiring;
 
-    void OnFire(InputValue value)
+    private PlayerInput playerInput;
+    private InputAction fireAction;
+
+    void Awake()
     {
-        isFiring = value.isPressed;
+        playerInput = GetComponent<PlayerInput>();
+        fireAction = playerInput.actions["Fire"];
+    }
+
+    void OnEnable()
+    {
+        fireAction.performed += StartFiring;
+        fireAction.canceled += StopFiring;
+    }
+
+    void OnDisable()
+    {
+        fireAction.performed -= StartFiring;
+        fireAction.canceled -= StopFiring;
+    }
+
+    private void StartFiring(InputAction.CallbackContext context)
+    {
+        isFiring = true;
+    }
+
+    private void StopFiring(InputAction.CallbackContext context)
+    {
+        isFiring = false;
+    }
+
+    void Update()
+    {
+        if (isFiring && Time.time >= nextFireTime)
+        {
+            Fire();
+            nextFireTime = Time.time + fireRate;
+        }
     }
 
     void Fire()
@@ -20,12 +58,8 @@ public class PlayerShooting : MonoBehaviour
         if (isFiring)
         {
             GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.Euler(0, 0, transform.localScale.x >= 0 ? 0 : 180));
-        }
-            
+        }           
     }
 
-    void Update()
-    {
-        Fire();
-    }
+
 }
