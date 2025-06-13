@@ -13,11 +13,13 @@ public class PlayerShooting : MonoBehaviour
     private float nextFireTime = 0f;
     private bool isFiring;
 
+    private GunKickback gunKickback;
     private PlayerInput playerInput;
     private InputAction fireAction;
 
     void Awake()
     {
+        gunKickback = FindFirstObjectByType<GunKickback>();
         playerInput = GetComponent<PlayerInput>();
         fireAction = playerInput.actions["Fire"];
     }
@@ -57,6 +59,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (isFiring)
         {
+            gunKickback.PlayKickback();
             GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.Euler(0, 0, transform.localScale.x >= 0 ? 0 : 180));
         }           
     }

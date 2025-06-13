@@ -10,6 +10,20 @@ public class TweenSceneStart : MonoBehaviour
     // A dictionary to store the objects and their start positions
     private Dictionary<GameObject, Vector3> startPositions = new Dictionary<GameObject, Vector3>();
 
+    private void Awake()
+    {
+        EffectManager effectManager = FindFirstObjectByType<EffectManager>();
+        if (effectManager.LevelTween == false)
+        {
+            this.enabled = false;
+        }
+        else
+        {
+            this.enabled = true;
+        }
+    }
+
+
     void Start()
     {
         GameObject[] objectsToReset = GameObject.FindGameObjectsWithTag(objectTag);
