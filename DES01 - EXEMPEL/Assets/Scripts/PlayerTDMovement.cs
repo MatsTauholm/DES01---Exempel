@@ -27,7 +27,7 @@ public class PlayerTDMovement : MonoBehaviour
     void Run()
     {
         Vector2 playerVelocity = moveInput * moveSpeed;
-        rb.velocity = playerVelocity;
+        rb.linearVelocity = playerVelocity;
 
         if (moveInput.x != 0)
         {

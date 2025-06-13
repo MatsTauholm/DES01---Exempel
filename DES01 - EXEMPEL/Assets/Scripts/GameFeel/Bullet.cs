@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-        rb.velocity = transform.right * bulletSpeed;
+        rb.linearVelocity = transform.right * bulletSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

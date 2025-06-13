@@ -28,7 +28,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         if(!knockback.isBeingKnockedBack)
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(-speed, rb.linearVelocity.y);
         }
         
     }

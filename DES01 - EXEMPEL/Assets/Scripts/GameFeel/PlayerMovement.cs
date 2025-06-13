@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isJumping && !knockback.isBeingKnockedBack)
         {
-            rb.velocity += (new Vector2(0f, jumpSpeed));
+            rb.linearVelocity += (new Vector2(0f, jumpSpeed));
             isJumping = false;
         }
 
@@ -66,8 +66,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Run()
     {
-        Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, rb.velocity.y);
-        rb.velocity = playerVelocity;
+        Vector2 playerVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        rb.linearVelocity = playerVelocity;
 
         if (moveInput.x != 0)
         {

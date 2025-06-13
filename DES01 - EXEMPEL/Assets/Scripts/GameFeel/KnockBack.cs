@@ -60,7 +60,7 @@ public class KnockBack : MonoBehaviour
             }
 
             //Apply knockback
-            rb.velocity = _combinedForce;
+            rb.linearVelocity = _combinedForce;
 
             yield return new WaitForFixedUpdate();
 
