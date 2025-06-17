@@ -7,6 +7,8 @@ public class PlayerShooting : MonoBehaviour
 {
     [Header("Gun Settings")]
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject bulletShell;
+    [SerializeField] GameObject gun;
     [SerializeField] Transform bulletSpawnPoint;
     [SerializeField] float fireRate = 0.2f;
 
@@ -61,6 +63,7 @@ public class PlayerShooting : MonoBehaviour
         {
             gunKickback.PlayKickback();
             GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.Euler(0, 0, transform.localScale.x >= 0 ? 0 : 180));
+            GameObject newbulletShell = Instantiate(bulletShell, gun.transform.position, Quaternion.identity);
         }           
     }
 

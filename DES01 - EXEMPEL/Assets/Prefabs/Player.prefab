@@ -271,6 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 3414094014013061050, guid: 16fb4eeb460e8db47a001c0fb32996ef, type: 3}
+  bulletShell: {fileID: 8943490689561497423, guid: b7996d84bf67c7e4cb73d5b8fb35b5c7, type: 3}
+  gun: {fileID: 2359414519925947827}
   bulletSpawnPoint: {fileID: 6803955249107334315}
   fireRate: 0.2
 --- !u!114 &4901725815015953844
