@@ -1,12 +1,27 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections.Generic;
+using Unity.Cinemachine;
 
 public class TweenSceneStart : MonoBehaviour
 {
-    [SerializeField] float xMinRange, xMaxRange, yMinRange, yMaxRange, tweenTime;
-    //Vector2 startPositions;
+    [Header("Level Move To Start Position")]
+    [SerializeField] float tweenTime;
+    [SerializeField] float xMinRange;
+    [SerializeField] float xMaxRange;
+    [SerializeField] float yMinRange;
+    [SerializeField] float yMaxRange;
+
+    [Header("Camera Shake")]
+    [SerializeField] float camTweenTime;
+    [SerializeField] float camShakeStrength;
+    [SerializeField] int camShakeVibro;
+    [SerializeField] float camShakeRandom;
+
+    [SerializeField] CinemachineFollow cam;
+
     string objectTag = "Resetable";
+
     // A dictionary to store the objects and their start positions
     private Dictionary<GameObject, Vector3> startPositions = new Dictionary<GameObject, Vector3>();
 
@@ -23,9 +38,9 @@ public class TweenSceneStart : MonoBehaviour
         }
     }
 
-
     void Start()
     {
+        //Find all the objects, save their startpos, then move them to a new random pos 
         GameObject[] objectsToReset = GameObject.FindGameObjectsWithTag(objectTag);
         foreach (var obj in objectsToReset)
         {
@@ -35,28 +50,17 @@ public class TweenSceneStart : MonoBehaviour
         {
             obj.transform.position = new Vector2(Random.Range(xMinRange, xMaxRange), Random.Range(yMinRange, yMaxRange));
         }
-        //transform.position = new Vector2(Random.Range(xMinRange, xMaxRange), Random.Range(yMinRange, yMaxRange));
+
         // Reset positions using DoTween
-        //ResetToStartPositions();
         ResetToStartPositionsSequentially();
     }
 
-    void ResetToStartPositions()
-    {
-        // Animate movement to the start position over time
-        foreach (var kvp in startPositions)
-        {
-            GameObject obj = kvp.Key;
-            Vector2 startPosition = kvp.Value;
-            obj.transform.DOMove(startPositions[obj], tweenTime).SetEase(Ease.InOutQuad);
-        }
-   
-    }
     void ResetToStartPositionsSequentially()
     {
         // Create a sequence
         Sequence sequence = DOTween.Sequence();
 
+        //1. Move level objects to start position 
         foreach (var kvp in startPositions)
         {
             GameObject obj = kvp.Key;
@@ -68,7 +72,10 @@ public class TweenSceneStart : MonoBehaviour
             }
         }
 
+        //2. Camera Shake
+        sequence.Append(cam.DOShakePosition(camTweenTime, camShakeStrength, camShakeVibro, camShakeRandom));
+
         // Optionally, add a callback when all animations are done
-        sequence.OnComplete(() => Debug.Log("All objects moved to start positions!"));
+        sequence.OnComplete(() => Debug.Log("Sequence Complete!"));
     }
 }
