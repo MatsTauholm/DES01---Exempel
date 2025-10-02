@@ -73,7 +73,7 @@ public class TweenSceneStart : MonoBehaviour
         }
 
         //2. Camera Shake
-        sequence.Append(cam.DOShakePosition(camTweenTime, camShakeStrength, camShakeVibro, camShakeRandom));
+        //sequence.Append(cam.DOShakePosition(camTweenTime, camShakeStrength, camShakeVibro, camShakeRandom));
 
         // Optionally, add a callback when all animations are done
         sequence.OnComplete(() => Debug.Log("Sequence Complete!"));
