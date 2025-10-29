@@ -3,23 +3,18 @@ using DG.Tweening;
 using System.Collections.Generic;
 using Unity.Cinemachine;
 
-public class TweenSceneStart : MonoBehaviour
+public class SceneStart : MonoBehaviour
 {
     [Header("Level Move To Start Position")]
-    [SerializeField] float tweenTime;
-    [SerializeField] float xMinRange;
-    [SerializeField] float xMaxRange;
-    [SerializeField] float yMinRange;
-    [SerializeField] float yMaxRange;
+    [SerializeField] private float tweenTime;
+    [SerializeField] private float xMinRange;
+    [SerializeField] private float xMaxRange;
+    [SerializeField] private float yMinRange;
+    [SerializeField] private float yMaxRange;
 
-    [Header("Camera Shake")]
-    [SerializeField] float camTweenTime;
-    [SerializeField] float camShakeStrength;
-    [SerializeField] int camShakeVibro;
-    [SerializeField] float camShakeRandom;
+    [SerializeField] private GameObject player;
 
-    [SerializeField] CinemachineFollow cam;
-
+    private CinemachineImpulseSource impulseSource;
     string objectTag = "Resetable";
 
     // A dictionary to store the objects and their start positions
@@ -51,6 +46,8 @@ public class TweenSceneStart : MonoBehaviour
             obj.transform.position = new Vector2(Random.Range(xMinRange, xMaxRange), Random.Range(yMinRange, yMaxRange));
         }
 
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+
         // Reset positions using DoTween
         ResetToStartPositionsSequentially();
     }
@@ -60,7 +57,7 @@ public class TweenSceneStart : MonoBehaviour
         // Create a sequence
         Sequence sequence = DOTween.Sequence();
 
-        //1. Move level objects to start position 
+        //Move level objects to start position 
         foreach (var kvp in startPositions)
         {
             GameObject obj = kvp.Key;
@@ -71,11 +68,14 @@ public class TweenSceneStart : MonoBehaviour
                 sequence.Append(obj.transform.DOMove(startPositions[obj], 0.3f).SetEase(Ease.InOutQuad));
             }
         }
-
-        //2. Camera Shake
-        //sequence.Append(cam.DOShakePosition(camTweenTime, camShakeStrength, camShakeVibro, camShakeRandom));
-
-        // Optionally, add a callback when all animations are done
-        sequence.OnComplete(() => Debug.Log("Sequence Complete!"));
+          
+        //Spawn Player on complete
+        sequence.OnComplete(SpawnPlayer);
+    }
+    
+    private void SpawnPlayer()
+    {
+        player.SetActive(true);
+        CameraShakeManager.instance.CameraShake(impulseSource);  
     }
 }
