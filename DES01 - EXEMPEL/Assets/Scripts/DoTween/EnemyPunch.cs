@@ -7,6 +7,7 @@ public class EnemyPunch : MonoBehaviour
 {
     [SerializeField] Transform player;        // Reference to the player
     [SerializeField] GameObject fist;        // Reference to the fist
+
     [Header("Movement Settings")]
     [SerializeField] float moveSpeed = 3f;    // Movement speed of the enemy
     [SerializeField] float stopDistance = 2f; // Distance to stop and punch
