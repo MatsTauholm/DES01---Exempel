@@ -10,6 +10,7 @@ public class Sawblade : MonoBehaviour
     [SerializeField] float rotateTime = 2;
     [SerializeField] DG.Tweening.Ease linearEase;
     [SerializeField] DG.Tweening.Ease angularEase;
+
     void Start()
     {
         sawblade.transform.DOLocalMove(new Vector3(5,0,0),moveTime)
@@ -19,5 +20,4 @@ public class Sawblade : MonoBehaviour
             .SetEase(angularEase)
             .SetLoops(-1, LoopType.Restart);    
     }
-
 }
