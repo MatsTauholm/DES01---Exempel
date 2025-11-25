@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
-    [SerializeField] float speed = 2.0f;
-    [SerializeField] int maxHealth = 7;
-    int currentHealth;
-    Rigidbody2D rb;
+    [SerializeField] private float speed = 2.0f;
+    [SerializeField] private int maxHealth = 7;
+
+    private int currentHealth;
+    private Rigidbody2D rb;
     private KnockBack knockback;
-    TimeFreezer timeFreezer;
+    private TimeFreezer timeFreezer;
 
     void Awake()
     {
@@ -39,11 +40,11 @@ public class EnemyBehavior : MonoBehaviour
         // Check if health is depleted
         if (currentHealth <= 0)
         {
-            timeFreezer.Freeze();
+            timeFreezer.Freeze(0.05f);
             Destroy(gameObject);
         }
 
         //Apply knockback
-        knockback.CallKnockBack(hitDirection, Vector2.up, 0f);
+        knockback.CallKnockBack(hitDirection, Vector2.right, 0f);
     }
 }

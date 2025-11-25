@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class TimeFreezer : MonoBehaviour
 {
-    [SerializeField] float duration = 0.7f;
-    bool _isFrozen = false;
+    private  bool _isFrozen = false;
+    private  TimeFreezer _instance;
+
     
-    public void Freeze()
+    public void Freeze(float duration)
     {
         if (!_isFrozen)
         {
-            StartCoroutine(DoFreeze());
+            StartCoroutine(DoFreeze(duration));
         }
 
     }
-    IEnumerator DoFreeze()
+
+    IEnumerator DoFreeze(float duration)
     {
         _isFrozen = true;
         var orgTimeScale = Time.timeScale;

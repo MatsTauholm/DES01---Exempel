@@ -2,26 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour, IMechanic
+public class Bullet : MonoBehaviour
 {
-    [SerializeField] float bulletSpeed = 5f;
-    [SerializeField] float spreadAngle = 0f;
-    [SerializeField] int damageAmount;
-    Rigidbody2D rb;
+    [SerializeField] private float bulletSpeed = 5f;
+    [SerializeField] private float spreadAngle = 0f;
+    [SerializeField] private int damageAmount;
 
-    public bool IsEnabled { get; private set; } = true;
-
-    public void Enable()
-    {
-        IsEnabled = true;
-        // Activate logic
-    }
-
-    public void Disable()
-    {
-        IsEnabled = false;
-        // Deactivate logic
-    }
+    private Vector2 spreadDirection;
+    private Rigidbody2D rb;
 
     void Awake()
     {
@@ -29,21 +17,21 @@ public class Bullet : MonoBehaviour, IMechanic
     }
 
     void Start()
-    {
-        var effects = EffectManager.Instance;
-        
+    {     
         // Apply random spread angle
         float randomSpread = Random.Range(-spreadAngle, spreadAngle);
         Quaternion spreadRotation = Quaternion.Euler(0f, 0f, randomSpread);
-        Vector2 spreadDirection = spreadRotation * transform.right;
-
-        // Set the velocity
-        rb.linearVelocity = spreadDirection * bulletSpeed;
+        spreadDirection = spreadRotation * transform.right;
     }
 
     void Update()
     {
-        rb.linearVelocity = transform.right * bulletSpeed;
+        rb.linearVelocity = spreadDirection * bulletSpeed;
+
+        Vector2 dir = rb.linearVelocity;
+
+        if (dir != Vector2.zero)
+            transform.right = dir;   // Or transform.right = dir;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

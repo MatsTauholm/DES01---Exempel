@@ -52,29 +52,12 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        RotateGunToMouse();
         if (isFiring && Time.time >= nextFireTime)
         {
             Fire();
             nextFireTime = Time.time + fireRate;
         }
     }
-
-    void RotateGunToMouse()
-    {
-        // Get mouse position in world space
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // Calculate direction from gun to mouse
-        Vector2 direction = (mousePosition - gun.transform.position).normalized;
-
-        // Calculate angle in degrees
-        gunAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-        // Apply rotation to the gun
-        gun.transform.rotation = Quaternion.Euler(0f, 0f, gunAngle);
-    }
-
 
     void Fire()
     {
@@ -86,6 +69,4 @@ public class PlayerShooting : MonoBehaviour
             GameObject newbulletShell = Instantiate(bulletShell, gun.transform.position, gun.transform.rotation);
         }           
     }
-
-
 }
