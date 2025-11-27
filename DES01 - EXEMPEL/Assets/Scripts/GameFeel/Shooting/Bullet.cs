@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private GameObject hitEffectPrefab;
     [SerializeField] private float bulletSpeed = 5f;
     [SerializeField] private float spreadAngle = 0f;
     [SerializeField] private int damageAmount;
@@ -40,6 +41,7 @@ public class Bullet : MonoBehaviour
         {
             enemyBehavior.TakeDamage(damageAmount, transform.right);
         }
+        Instantiate(hitEffectPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

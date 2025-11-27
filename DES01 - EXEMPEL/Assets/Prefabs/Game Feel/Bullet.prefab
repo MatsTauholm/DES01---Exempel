@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb8e67f988fc714581c2864947f3ab2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 2266242420218981407, guid: 28601c919a082f84badb793c8bca5594, type: 3}
   bulletSpeed: 30
   spreadAngle: 3
   damageAmount: 1

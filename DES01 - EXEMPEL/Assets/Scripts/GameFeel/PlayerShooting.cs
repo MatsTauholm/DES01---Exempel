@@ -9,7 +9,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject bulletShell;
     [SerializeField] private GameObject gun;
-    [SerializeField] private Transform bulletSpawnPoint;
+    [SerializeField] private GameObject muzzleFlash; 
     [SerializeField] private float fireRate = 0.2f;
     [SerializeField] private AudioClip shoot;
 
@@ -17,6 +17,7 @@ public class PlayerShooting : MonoBehaviour
     private float nextFireTime = 0f;
     private bool isFiring;
 
+    private SpriteRenderer muzzleFlashSprite;
     private GunKickback gunKickback;
     private PlayerInput playerInput;
     private InputAction fireAction;
@@ -25,6 +26,7 @@ public class PlayerShooting : MonoBehaviour
     {
         gunKickback = FindFirstObjectByType<GunKickback>();
         playerInput = GetComponent<PlayerInput>();
+        muzzleFlashSprite = muzzleFlash.GetComponent<SpriteRenderer>();
         fireAction = playerInput.actions["Fire"];
     }
 
@@ -63,10 +65,17 @@ public class PlayerShooting : MonoBehaviour
     {
         if (isFiring)
         {
+            StartCoroutine(MuzzleFlash());
             gunKickback.PlayKickback();
             AudioManager.PlaySound(shoot);
-            GameObject newBullet = Instantiate(bullet, bulletSpawnPoint.position, Quaternion.Euler(0, 0, transform.localScale.x >= 0 ? 0 : 180));
+            GameObject newBullet = Instantiate(bullet, muzzleFlash.transform.position, Quaternion.Euler(0, 0, transform.localScale.x >= 0 ? 0 : 180));
             GameObject newbulletShell = Instantiate(bulletShell, gun.transform.position, gun.transform.rotation);
         }           
+    }
+    private IEnumerator MuzzleFlash()
+    {
+        muzzleFlashSprite.enabled = true;
+        yield return new WaitForSeconds(0.05f);
+        muzzleFlashSprite.enabled = false;
     }
 }

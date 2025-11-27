@@ -60,8 +60,6 @@ public class PlayerMovement : MonoBehaviour
         {
             ani.SetBool("isJumping", false);
         }
-
-
     }
 
     private void Run()
