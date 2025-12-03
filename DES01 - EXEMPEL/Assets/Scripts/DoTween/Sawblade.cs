@@ -5,14 +5,15 @@ using DG.Tweening;
 
 public class Sawblade : MonoBehaviour
 {
-    [SerializeField] Transform sawblade;
-    [SerializeField] float moveTime = 2;
-    [SerializeField] float rotateTime = 2;
-    [SerializeField] DG.Tweening.Ease linearEase;
-    [SerializeField] DG.Tweening.Ease angularEase;
+    [SerializeField] private Transform sawblade;
+    [SerializeField] private float moveTime = 2;
+    [SerializeField] private float rotateTime = 2;
+    [SerializeField] private DG.Tweening.Ease linearEase;
+    [SerializeField] private DG.Tweening.Ease angularEase;
 
     void Start()
     {
+        // Start the sawblade movement and rotation
         sawblade.transform.DOLocalMove(new Vector3(5,0,0),moveTime)
             .SetEase(linearEase)
             .SetLoops(-1, LoopType.Yoyo);
