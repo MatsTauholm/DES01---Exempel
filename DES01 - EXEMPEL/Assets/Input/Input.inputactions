@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "PlayerInput",
+    "name": "Input",
     "maps": [
         {
             "name": "Player",
@@ -816,6 +816,34 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Developer",
+            "id": "7fe6f2bd-6b25-4f63-97b0-1592c7028dce",
+            "actions": [
+                {
+                    "name": "Restart",
+                    "type": "Button",
+                    "id": "074d00a5-cbd9-4c8f-bf95-bfdfa3c917aa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1786645e-7cb5-4f85-b1a7-0923f3f4ee51",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Restart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -5,12 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneRestart : MonoBehaviour
 {
-    private void Update()
+    private void OnRestart()
     {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            Scene currentScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(currentScene.name);
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
