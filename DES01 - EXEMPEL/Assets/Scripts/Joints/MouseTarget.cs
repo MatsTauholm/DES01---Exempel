@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Set the TargetJoint2D to follow the mouse position.
-/// </summary>
 public class MouseTarget : MonoBehaviour
 {
 	[SerializeField] bool ClickToMove = false;
@@ -12,13 +9,13 @@ public class MouseTarget : MonoBehaviour
 
 	void Start()
 	{
-		// Fetch the target joint.
 		targetJoint = GetComponent<TargetJoint2D> ();
-
-		// Finish if no joint detected.
-		if (targetJoint == null)
-			return;
 	} 
+
+    private void Action()
+    {
+        MoveToMousePosition();
+    }
 
 	public void MoveToMousePosition()
     {
