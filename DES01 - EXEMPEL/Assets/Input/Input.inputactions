@@ -848,6 +848,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Target Joint",
+            "id": "bfe2df01-0d29-46fd-9387-45c1f7417472",
+            "actions": [
+                {
+                    "name": "Action",
+                    "type": "Button",
+                    "id": "6e4fe9a2-1a43-4e43-adff-678c9b66c657",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "270c7b42-b145-40f7-a1a8-a95edddf21e2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

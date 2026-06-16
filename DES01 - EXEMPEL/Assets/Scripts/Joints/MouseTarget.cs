@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseTarget : MonoBehaviour
 {
@@ -12,9 +13,12 @@ public class MouseTarget : MonoBehaviour
 		targetJoint = GetComponent<TargetJoint2D> ();
 	} 
 
-    private void Action()
+    private void Update()
     {
-        MoveToMousePosition();
+        if (Mouse.current.leftButton.isPressed)
+        {
+            MoveToMousePosition();
+        } 
     }
 
 	public void MoveToMousePosition()
