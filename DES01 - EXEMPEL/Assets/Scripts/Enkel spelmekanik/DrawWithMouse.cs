@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DrawWithMouse : MonoBehaviour
 {
@@ -19,9 +20,9 @@ public class DrawWithMouse : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetMouseButton(0)) // Check if left mouse button is held down
+        if(Mouse.current.leftButton.isPressed) // Check if left mouse button is held down
         {
-            Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             currentPosition.z = 0; // Set z to 0 for 2D drawing
             if (Vector3.Distance(previousPosition, currentPosition) > minDistance) // Add a new point if the mouse has moved enough
             {
