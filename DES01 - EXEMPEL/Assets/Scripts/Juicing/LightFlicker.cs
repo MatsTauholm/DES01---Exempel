@@ -5,20 +5,17 @@ using UnityEngine.Rendering.Universal; //Namespace for lightsettings
 
 public class LightFlicker : MonoBehaviour
 {    
-    [SerializeField] float flickerIntervalMin = 0.05f;  // Minimum time between flickers
-    [SerializeField] float flickerIntervalMax = 0.5f;   // Maximum time between flickers
-    [SerializeField] float onIntensity = 1.5f;          // Light intensity when "on"
-    [SerializeField] float offIntensity = 0.0f;         // Light intensity when "off"
+    [SerializeField] private float flickerIntervalMin = 0.05f;  // Minimum time between flickers
+    [SerializeField] private float flickerIntervalMax = 0.5f;   // Maximum time between flickers
+    [SerializeField] private float onIntensity = 1.5f;          // Light intensity when "on"
+    [SerializeField] private float offIntensity = 0.0f;         // Light intensity when "off"
 
     private Light2D light2D;
     private float timer;
 
     private void Start()
     {
-        if (light2D == null)
-        {
-            light2D = GetComponent<Light2D>();
-        }
+        light2D = GetComponent<Light2D>();
         timer = Random.Range(flickerIntervalMin, flickerIntervalMax);
     }
 
@@ -30,9 +27,13 @@ public class LightFlicker : MonoBehaviour
         {
             // Toggle the light intensity between on and off
             if (light2D.intensity == onIntensity)
-            { light2D.intensity = offIntensity; }
+            { 
+                light2D.intensity = offIntensity; 
+            }
             else
-            { light2D.intensity = onIntensity; }
+            { 
+                light2D.intensity = onIntensity;
+            }
 
             // Reset the timer to a new random interval
             timer = Random.Range(flickerIntervalMin, flickerIntervalMax);

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Drag a Rigidbody2D by selecting one of its colliders by pressing the mouse down.
@@ -24,9 +25,9 @@ public class DragTarget : MonoBehaviour
 	void Update ()
 	{
 		// Calculate the world position for the mouse.
-		var worldPos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		var worldPos = Camera.main.ScreenToWorldPoint (Mouse.current.position.ReadValue());
 
-		if (Input.GetMouseButtonDown (0))
+		if (Mouse.current.leftButton.wasPressedThisFrame)
 		{
 			// Fetch the first collider.
 			// NOTE: We could do this for multiple colliders.
@@ -47,7 +48,7 @@ public class DragTarget : MonoBehaviour
 			// Attach the anchor to the local-point where we clicked.
 			m_TargetJoint.anchor = m_TargetJoint.transform.InverseTransformPoint (worldPos);		
 		}
-		else if (Input.GetMouseButtonUp (0))
+		else if (Mouse.current.leftButton.wasReleasedThisFrame)
 		{
 			Destroy (m_TargetJoint);
 			m_TargetJoint = null;

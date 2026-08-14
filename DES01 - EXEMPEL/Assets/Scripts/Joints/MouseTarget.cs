@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class MouseTarget : MonoBehaviour
 {
 	[SerializeField] bool ClickToMove = false;
-	TargetJoint2D targetJoint;
+	private TargetJoint2D targetJoint;
 
 	void Start()
 	{
@@ -21,14 +21,14 @@ public class MouseTarget : MonoBehaviour
         } 
     }
 
-	public void MoveToMousePosition()
+	private void MoveToMousePosition()
     {
             // Finish if no joint detected.
             if (targetJoint == null)
                 return;
 
             // Calculate the world position for the mouse.
-            var worldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
             // Set the joint target.
             targetJoint.target = worldPos;

@@ -6,7 +6,6 @@ using UnityEngine;
 public class ToggeMotor : MonoBehaviour
 {
     [SerializeField] SliderJoint2D m_Joint;
-
     [SerializeField] float m_TogglePeriod = 1f;
 
     IEnumerator Start()

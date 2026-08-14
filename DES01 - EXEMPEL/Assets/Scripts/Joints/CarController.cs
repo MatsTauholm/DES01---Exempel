@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
@@ -32,13 +33,13 @@ public class CarController : MonoBehaviour
         jointMotor.maxMotorTorque = m_MotorMaximumForce;
 
         // If we're pressing the forward then turn on the motor forwards.
-        if (Input.GetKey (KeyCode.RightArrow))
+        if (Keyboard.current.rightArrowKey.isPressed)
         {
             useMotor = true;
             jointMotor.motorSpeed = motorSpeed;
         }
         // If we're pressing the forward then turn on the motor backwards.
-        else if (Input.GetKey (KeyCode.LeftArrow))
+        else if (Keyboard.current.leftArrowKey.isPressed)
         {
             useMotor = true;
             jointMotor.motorSpeed = -motorSpeed;

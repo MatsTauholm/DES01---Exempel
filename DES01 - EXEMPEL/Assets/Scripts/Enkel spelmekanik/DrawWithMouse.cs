@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,6 @@ public class DrawWithMouse : MonoBehaviour
     private LineRenderer lineRenderer;
     private Vector3 previousPosition;
 
-
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -20,7 +20,12 @@ public class DrawWithMouse : MonoBehaviour
 
     void Update()
     {
-        if(Mouse.current.leftButton.isPressed) // Check if left mouse button is held down
+        DrawLine();
+    }
+
+    private void DrawLine()
+    {
+        if (Mouse.current.leftButton.isPressed) // Check if left mouse button is held down
         {
             Vector3 currentPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             currentPosition.z = 0; // Set z to 0 for 2D drawing
